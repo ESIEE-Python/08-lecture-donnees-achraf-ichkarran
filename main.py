@@ -1,4 +1,6 @@
 #### Imports et définition des variables globales
+"""L'objectif est d'écrire une fonction de lecture des données contenues 
+dans un fichier et diverses fonctions manipulant des listes numériques."""
 import random
 
 FILENAME = "listes.csv"
@@ -15,39 +17,77 @@ def read_data(filename):
         list: le contenu du fichier (1 list par ligne)
     """
     l = []
+    with open(filename,mode='r',encoding='utf8') as f:
+        s=f.readlines()
+        l=list(s)
+    f.close()
+
     return l
 
 def get_list_k(data, k):
-    l = []
-    return l
+    """Args:
+        data (list):le contenue du fichier (filename)
+        k (int):numero de la kieme ligne
+
+    Returns:
+        list: kieme ligne
+    """
+    return data[k]
 
 def get_first(l):
-    return None
+    """Args:
+        l(list)
+
+    Returns:
+        int:premier element de la liste
+    """
+    return l[0]
 
 def get_last(l):
-    return None
+    """Args:
+        l(list)
+
+    Returns:
+        int:dernier element de la liste
+    """
+    return l[-1]
 
 def get_max(l):
-    return None
+    """Args:
+        l(list)
+
+    Returns:
+        int:plus grand element de la liste
+    """
+    return max(l)
 
 def get_min(l):
-    return None
+    """Args:
+        l(list)
+
+    Returns:
+        int:plus petit element de la liste
+    """
+    return min(l)
 
 def get_sum(l):
-    return None
+    """Args:
+        l(list)
+
+    Returns:
+        int:somme des elements elements de la liste
+    """
+    return sum(l)
 
 
 #### Fonction principale
 
 
 def main():
-    pass
-    # data = read_data(FILENAME)
-    # for i, l in enumerate(data):
-    #     print(i, l)
-    # k = 37
-    # print(k, get_list_k(data, 37))
-
-
+    data = read_data(FILENAME)
+    for i, l in enumerate(data):
+        print(i, l)
+    k = 37
+    print(k, get_list_k(data, 37))
 if __name__ == "__main__":
     main()
